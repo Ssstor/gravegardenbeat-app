@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth Callback — GraveGardenBeat</title>
+    <style>
+        body { max-width: 600px; margin: 40px auto; padding: 20px; font-family: -apple-system, monospace; line-height: 1.6; color: #eee; background: #111; text-align: center; }
+        h1 { color: #fff; font-size: 1.5em; }
+        #code { background: #222; border: 1px solid #555; padding: 15px; margin: 20px 0; font-size: 14px; word-break: break-all; border-radius: 6px; color: #5f5; }
+        button { background: #fe2c55; color: #fff; border: none; padding: 12px 30px; font-size: 16px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #e0264a; }
+        .note { color: #888; font-size: 0.85em; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Authorization Code</h1>
+    <p>Copy the code below and paste it into your terminal:</p>
+    <div id="code">Extracting code...</div>
+    <button onclick="copyCode()">Copy to Clipboard</button>
+    <p class="note">You can close this page after copying the code.<br>The code is single-use and expires in a few minutes.</p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const error = params.get('error');
+        const errorDesc = params.get('error_description');
+
+        if (code) {
+            document.getElementById('code').textContent = code;
+        } else if (error) {
+            document.getElementById('code').textContent = 'Error: ' + error + (errorDesc ? ' — ' + errorDesc : '');
+            document.getElementById('code').style.color = '#f55';
+        } else {
+            document.getElementById('code').textContent = 'No authorization code found in URL. Check the redirect.';
+        }
+
+        function copyCode() {
+            const text = document.getElementById('code').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('button');
+                btn.textContent = 'Copied!';
+                btn.style.background = '#25a244';
+            });
+        }
+    </script>
+</body>
+</html>
