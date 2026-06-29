@@ -8,5 +8,5 @@ Personal tool for managing the [@gravegardenbeat](https://www.tiktok.com/@graveg
 - Runs locally on Linux, no third-party access
 
 ## Legal
-- [Terms of Service](https://s4vva.github.io/gravegardenbeat-app/)
-- [Privacy Policy](https://s4vva.github.io/gravegardenbeat-app/privacy)
+- [Terms of Service](https://ssstor.github.io/gravegardenbeat-app/)
+- [Privacy Policy](https://ssstor.github.io/gravegardenbeat-app/privacy)
